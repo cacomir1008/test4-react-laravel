@@ -1,27 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 
 function Top() {
-
-    const [users, setUsers] = useState([]);
-
-    useEffect(() => {
-        getUsers()
-    },[])
-
-    const getUsers = async () => {
-        const response = await axios.get('/api/');
-        setUsers(response.data.users)
-    }
-
-    return (
-        <div>
-            <h1>ユーザー一覧</h1>
-            <ul>
-                {users.map((user) => <li key="{user.id}">{user.name}</li>)}
-            </ul>
-        </div>
-    );
+    return <h1>Topページ</h1>;
 }
 
 export default Top;
