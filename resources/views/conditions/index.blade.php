@@ -10,7 +10,7 @@
         <i class="fas fa-user-circle fa-3x mr-1"></i>
         <div>
           <div class="font-weight-bold">
-            ユーザー名
+            {{Auth::user()->api_token}}
           </div>
           <div class="font-weight-lighter">
             2020/2/1 12:00
