@@ -11,18 +11,12 @@
 |
 */
 
-// Route::get('/{any}', function () {
-//     return view('welcome');
-// })->where('any','.*');
-
 Route::get('/', function () {
-        return view('welcome');
-    });
-
-Route::get('/login', function () {
-    return view('login');
+    return view('welcome');
 });
 
-Route::post('/login', 'UsersController@login');
-
 Auth::routes();
+
+Route::get('/{any}', function () {
+    return view('welcome');
+})->where('any','.*');
