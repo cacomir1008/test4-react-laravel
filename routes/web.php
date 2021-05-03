@@ -14,6 +14,6 @@
 Auth::routes();
 
 Route::get('/', 'ConditionController@index');
-Route::resource('/conditions','ConditionController');
+Route::resource('/conditions','ConditionController')->middleware('auth');
 
 
