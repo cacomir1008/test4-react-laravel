@@ -25,8 +25,8 @@ class CreateConditionsTable extends Migration
             $table->text('others')->nullable();
             $table->text('comment');
             $table->text('feelings');
-            $table->bigInteger('conditionsdata_id');
-            $table->bigInteger('user_id');
+            $table->bigInteger('conditiondata_id');
+            $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
