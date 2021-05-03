@@ -9,7 +9,7 @@ class ConditionController extends Controller
 {
     public function index(){
 
-        return view('conditions.mypage');
+        return view('conditions.index');
     }
 
     public function create() {
