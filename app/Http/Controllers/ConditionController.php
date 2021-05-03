@@ -41,10 +41,13 @@ class ConditionController extends Controller
     // 全てのユーザー情報、Condition情報抽出API
     public function  allinfo() {
         $users = User::all();
-        $conditions = Condition::all();
+        // $conditions = Condition::all();
+
+        $conditions = Condition::select()
+       ->join('users','users.id','=','conditions.user_id')
+       ->get(); 
 
         return response()->json([
-            'users' => $users->toArray(),
             'conditions' => $conditions->toArray(),
         ], 400);
     }
