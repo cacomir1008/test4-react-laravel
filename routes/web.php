@@ -14,4 +14,6 @@
 Auth::routes();
 
 Route::get('/', 'ConditionController@index');
+Route::resource('/conditions','ConditionController');
+
 
