@@ -20,11 +20,11 @@ class CreateConditionsTable extends Migration
         Schema::create('conditions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('start');
-            $table->date('diagnosis');
+            $table->date('diagnosis')->nullable();
             $table->string('hospital');
             $table->text('others')->nullable();
-            $table->text('comment');
-            $table->text('feelings');
+            $table->text('comment')->nullable();
+            $table->text('icon')->nullable();
             $table->bigInteger('conditiondata_id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

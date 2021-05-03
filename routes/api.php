@@ -13,9 +13,19 @@ use Illuminate\Http\Request;
 |
 */
 
+// ユーザー情報表示API
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// トークン更新API(必要な時に叩けばトークン情報が変わる)
 Route::get('/tokenupdate','ApiTokenController@update');
 
+
+// ログインユーザーのCondition情報取得API
+Route::middleware('auth:api')->group(function() {
+    Route::resource('conditions', 'ConditionController');
+});
+
+// 全ユーザーとCondition情報取得API
+Route::get('/allinfo', 'ConditionController@allinfo');

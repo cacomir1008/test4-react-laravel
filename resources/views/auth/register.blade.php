@@ -40,7 +40,7 @@
                 </select>
                 <div id="birthday" class="md-form md-outline input-with-post-icon">
                     <input type="date" id="birthday" name="birthday" class="form-control">
-                    <label for="example">生年月日</label>
+                    <label for="birthday">生年月日</label>
                 </div>
                 <div class="custom-file mb-3">
                   <input type="file" class="custom-file-input" id="icon" name="icon">

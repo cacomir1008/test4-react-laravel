@@ -14,41 +14,49 @@
             @include('error_card_list') 
 
             <div class="card-text">
-              <form method="POST" action="{{ route('register') }}">
+              <form method="POST" action="{{ route('conditions.store') }}">
                 @csrf
                 <div class="md-form">
-                  <select class="custom-select mb-3" id="condition_name" name="condition_name">
+                  <select class="custom-select mb-3" id="conditiondata_id" name="conditiondata_id">
+                  <option selected>病名を選ぶ</option>
                     @foreach($conditiondatas as $data)
                         <option value="{{ $data->id }}">{{ $data->name }}</option>
                     @endforeach
+                  </select>
                 </div>
-                </select>
+                <div id="start" class="md-form md-outline input-with-post-icon">
+                    <input type="date" id="start" name="start" class="form-control">
+                    <label for="start" class="mt-1">いつから感じたか</label>
+                </div>
+                <div id="diagnosis" class="md-form md-outline input-with-post-icon">
+                    <input type="date" id="diagnosis" name="diagnosis" class="form-control">
+                    <label for="diagnosis" class="mt-1">いつ診断されたか</label>
+                </div>
                 <div class="md-form">
-                  <label for="email">メールアドレス</label>
-                  <input class="form-control" type="text" id="email" name="email" required value="{{ old('email') }}" >
+                  <select class="custom-select mb-1" id="hospital" name="hospital">
+                  <option selected>今病院に通っているか</option>
+                    <option value="通っている">通っている</option>
+                    <option value="通っていない">通っていない</option>
+                    <option value="通っていないが病気だと感じている">通っていないが病気だと感じている</option>
+                    <option value="その他">その他</option>
+                  </select>
                 </div>
-                <div class="md-form">
-                  <label for="password">パスワード</label>
-                  <input class="form-control" type="password" id="password" name="password" required>
+                <div class="mb-3">
+                  <input type="text" class="form-control" id="others"  name="others" placeholder="その他を選んだ場合はこちらに記入">
                 </div>
-                <div class="md-form">
-                  <label for="password_confirmation">パスワード(確認)</label>
-                  <input class="form-control" type="password" id="password_confirmation" name="password_confirmation" required>
+                <div class="form-group">
+                  <div class="checkbox-inline" style="width:40%;">
+                    <label class="checkbox" for="icon">
+                      <input type="checkbox" data-toggle="checkbox" value="治療完了" id="icon" name="icon"> 治療完了（not 必須事項）
+                    </label>
+                  </div>
                 </div>
-                <div id="birthday" class="md-form md-outline input-with-post-icon">
-                    <input type="date" id="birthday" name="birthday" class="form-control">
-                    <label for="example">生年月日</label>
+                <div class="mb-3">
+                  <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="具体的な症状等"></textarea>
                 </div>
-                <div class="custom-file mb-3">
-                  <input type="file" class="custom-file-input" id="icon" name="icon">
-                  <label class="custom-file-label" for="icon">プロフィール画像</label>
-                </div>
-                <button class="btn btn-block mean-fruit-gradient mt-2 mb-2" type="submit">ユーザー登録</button>
+                <input type="hidden" id="user_id" name="user_id" required value="{{ Auth::user()->id }}">
+                <button class="btn btn-block mean-fruit-gradient mt-2 mb-2" type="submit">Condition登録</button>
               </form>
-              <div class="mt-0">
-                <a href="{{ route('login') }}" class="card-text">ログインはこちら</a>
-              </div>
-              
             </div>
           </div>
         </div>
