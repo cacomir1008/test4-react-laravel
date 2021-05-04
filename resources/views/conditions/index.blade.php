@@ -4,6 +4,8 @@
 
 @section('content')
 @include('nav')
+
+    
   <div class="container">
     <div class="card mt-3">
       <div class="card-body d-flex flex-row">
@@ -26,5 +28,9 @@
         </div>
       </div>
     </div>
+  </div>
+  //React
+  <div id="conditionlist">
+    a
   </div>
 @endsection

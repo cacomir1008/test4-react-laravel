@@ -31,7 +31,8 @@ class ConditionController extends Controller
         $condition->hospital = $request->hospital;
         $condition->others = $request->others;
         $condition->comment = $request->comment;
-        $condition->icon = $request->icon;
+        $condition->feelings = $request->feelings;
+        // $condition->icon = $request->icon;
         $condition->conditiondata_id = $request->conditiondata_id;
         $condition->user_id = $request->user_id;
         $condition->save();
