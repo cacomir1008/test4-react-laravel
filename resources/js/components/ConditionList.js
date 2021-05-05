@@ -3,13 +3,20 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 
+
 function ConditionList() {
     const [conditions, setConditions] = useState([]);
 
-    // 画面が読み込まれたらgetする
+    // // 画面が読み込まれたらgetする
     useEffect(() => {
         getAllConditions()
     },[])
+
+    const getAllConditions = async() => {
+        const res = await axios.get('/api/allinfo');
+        setConditions(res.data.conditions)
+    }
+
     // useEffect(
     //     () => {
     //         axios
@@ -23,22 +30,23 @@ function ConditionList() {
     //     },
     //     []
     // );
-    const getAllConditions = async () => {
-        await axios
-        .get('/api/allinfo')
-        .then( (res) => {
-                    setConditions(res.data.conditions);
-                    response=> console.log('body:',response.data);
-                    response=> console.log('status:', response.status); // 200
-                }).catch(error => {
-                     console.log('Error',error.response);
-                         });
-                }
+
+    // const getAllConditions = async () => {
+    //     await axios
+    //     .get('/api/allinfo')
+    //     .then( (res) => {
+    //                 setConditions(res.data.conditions);
+    //                 response=> console.log('body:',response.data);
+    //                 response=> console.log('status:', response.status); // 200
+    //             }).catch(error => {
+    //                  console.log('Error',error.response);
+    //                      });
+    //             }
     return(
         <>
         {conditions.map((condition) => (
-            <div key={condition.id}>
-            <Box bg="#FFF5F5" boxShadow="dark-lg" w="30%" p={4} color="gray">
+        <div key={condition.id}>
+            {/* <Box bg="#FFF5F5" boxShadow="dark-lg" w="30%" p={4} color="gray"> */}
                 <dt>いつから感じたか</dt>
                 <dd>{condition.start}</dd>
                 <dt>いつ診断されたか</dt>
@@ -47,13 +55,12 @@ function ConditionList() {
                 <dd>{condition.hospital}</dd>
                 <dt>コメント</dt>
                 <dd>{condition.comment}</dd>
-             </Box>
-             </div>
-             )
-             )
-            }
+             {/* </Box> */}
+                </div>
+            ))
+        }
         </>
-        )
+    )
 }
 
 // export default ConditionList;

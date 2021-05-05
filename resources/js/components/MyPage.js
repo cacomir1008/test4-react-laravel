@@ -69,7 +69,7 @@ const SDiv = styled.div`
     text-align:center;
     justify-content: center;
 `
-export default MyPage;
-// if (document.getElementById('mypage')) {
-//     ReactDOM.render(<MyPage />, document.getElementById('mypage'));
-// }
+// export default MyPage;
+if (document.getElementById('mypage')) {
+    ReactDOM.render(<MyPage />, document.getElementById('mypage'));
+}

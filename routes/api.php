@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use App\Condition;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +29,19 @@ Route::middleware('auth:api')->group(function() {
 });
 
 // 全ユーザーとCondition情報取得API
-Route::get('/allinfo', 'ConditionController@allinfo');
+Route::get('/allinfo', function(Request $request) {
+    $conditions = Condition::select()
+    ->join('users','users.id','=','conditions.user_id')
+    ->get(); 
+
+    return response()->json(['conditions' => $conditions]);
+});
+
+
+// Route::get('/user',function (Request $request) {
+	
+// 	$users = App\User::all();
+	
+// 	return response()->json(['users' => $users]);
+
+// });

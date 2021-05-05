@@ -31,8 +31,7 @@ class ConditionController extends Controller
         $condition->hospital = $request->hospital;
         $condition->others = $request->others;
         $condition->comment = $request->comment;
-        $condition->feelings = $request->feelings;
-        // $condition->icon = $request->icon;
+        $condition->icon = $request->icon;
         $condition->conditiondata_id = $request->conditiondata_id;
         $condition->user_id = $request->user_id;
         $condition->save();
@@ -40,17 +39,15 @@ class ConditionController extends Controller
     }
 
     // 全てのユーザー情報、Condition情報抽出API
-    public function  allinfo() {
-        $users = User::all();
-        // $conditions = Condition::all();
-
+    public function  allinfo() {        
         $conditions = Condition::select()
        ->join('users','users.id','=','conditions.user_id')
        ->get(); 
 
         return response()->json([
             'conditions' => $conditions->toArray(),
-        ], 400);
+        ]);
+
     }
 
 
@@ -68,7 +65,7 @@ class ConditionController extends Controller
         return response()->json([
             'success' => true,
             'data' => $condition->toArray(),
-        ], 400);
+        ]);
     }
 
 }
