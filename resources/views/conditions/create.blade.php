@@ -17,10 +17,11 @@
               <form method="POST" action="{{ route('conditions.store') }}">
                 @csrf
                 <div class="md-form">
-                  <select class="custom-select mb-3" id="conditiondata_id" name="conditiondata_id">
+                  <select class="custom-select mb-3" id="conditiondata_name" name="conditiondata_name">
                   <option selected>病名を選ぶ</option>
                     @foreach($conditiondatas as $data)
-                        <option value="{{ $data->id }}">{{ $data->name }}</option>
+                    <!--病名をそのまま渡す-->
+                        <option value="{{ $data->name }}">{{ $data->name }}</option>
                     @endforeach
                   </select>
                 </div>
@@ -55,6 +56,7 @@
                   <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="具体的な症状等"></textarea>
                 </div>
                 <input type="hidden" id="user_id" name="user_id" required value="{{ Auth::user()->id }}">
+                <input type="hidden" id="user_name" name="user_name" required value="{{ Auth::user()->name }}">
                 <button class="btn btn-block mean-fruit-gradient mt-2 mb-2" type="submit">Condition登録</button>
               </form>
             </div>

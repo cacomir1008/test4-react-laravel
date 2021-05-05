@@ -29,7 +29,6 @@
       </div>
     </div>
   </div>
-  //React
   <div id="conditionlist">
     a
   </div>

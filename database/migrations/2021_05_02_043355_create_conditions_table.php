@@ -25,9 +25,11 @@ class CreateConditionsTable extends Migration
             $table->text('others')->nullable();
             $table->text('comment')->nullable();
             $table->text('icon')->nullable();
-            $table->bigInteger('conditiondata_id');
+            $table->string('conditiondata_name');
             $table->unsignedInteger('user_id');
+            $table->string('user_name');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_name')->references('name')->on('users');
             $table->timestamps();
         });
     }

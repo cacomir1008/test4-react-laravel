@@ -19,7 +19,7 @@ class ConditionsTableSeeder extends Seeder
             'hospital'=> $faker->word(),
             'others'=> $faker->word(),
             'comment'=> $faker->word(),
-            'feelings'=> $faker->word(),
+            'icon'=> $faker->word(),
             'conditiondata_id'=> $faker->numberBetween(1, 999),
             'user_id'=> $faker->numberBetween(1, 10),
              ]);

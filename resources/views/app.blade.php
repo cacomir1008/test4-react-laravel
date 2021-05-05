@@ -21,7 +21,12 @@
   <!-- React -->
   <div id="app">
   </div>
-  
+  @if(Auth::check())
+  <script>
+    const api_token = @json(Auth::user()->api_token);
+    console.log("token",api_token)
+  </script>
+@endif
   <!-- Bootstrap tooltips -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
   <!-- Bootstrap core JavaScript -->

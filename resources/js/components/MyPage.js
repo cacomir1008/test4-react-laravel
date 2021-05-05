@@ -6,30 +6,39 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import { Box, Flex, Spacer } from "@chakra-ui/react";
 
-
 function MyPage() {
-
-
-    const [users, setUsers] = useState([]);
+    const [user, setUser] = useState([]);
 
     // 画面が読み込まれたらgetする
     useEffect(() => {
-        getUsers()
+        getUser()
     },[])
     
-    const getUsers = async () => {
-        const token = JSON.parse(api_token);
-        const response = await axios.get('/api/user?api_token='.token);
-        console.log(response.data)
-        setUsers(response.data.users)
-    }
-    
+    const getUser = async () => {
+        console.log("URL",`/api/user?api_token=${api_token}`)
+         await axios
+        .get(`/api/user?api_token=${api_token}`)
+        .then( (res) => {
+                console.log("user",res.data)
+                    setUser(res.data);
+                    // response=> console.log('body:',response.data);
+                    // response=> console.log('status:', response.status); // 200
+                }).catch(error => {
+                     console.log('Error',error.response);
+                         });
+                }
+    // const getUsers = async () => {
+    //     console.log("token",api_token)
+    //     console.log("URL",`/api/user?api_token=${api_token}`)
+    //     const response = await axios.get(`/api/user?api_token=${api_token}`);
+    //     console.log(response.data)
+    //     setUsers(response.data.users)
+    // }
+
     return (
         <div>
-            <SH1>World</SH1>
+            <SH1>My Page</SH1>
         <SDiv>
-         {users.map((user) => (
-            <div key={user.id}>
             <Box bg="#FED7D7" boxShadow="dark-lg" w="20%" p={4} color="gray">
              <dt>名前</dt>
              <dd>{user.name}</dd>
@@ -49,9 +58,7 @@ function MyPage() {
                 <dt>email</dt>
                 <dd>{user.email}</dd>
              </Box>
-             </div>
-                ))}
-        </SDiv>
+      </SDiv>
         </div>
     )
 }

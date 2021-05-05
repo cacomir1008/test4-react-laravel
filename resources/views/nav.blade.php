@@ -16,7 +16,7 @@
     @endguest
     
     <li class="nav-item">
-      <a class="nav-link" href=""><i class="fas fa-search mr-1"></i>他の人の体験談を検索</a>
+      <a class="nav-link" href="/alllist"><i class="fas fa-search mr-1"></i>他の人の体験談を検索</a>
     </li>
     @auth
     <li class="nav-item">
