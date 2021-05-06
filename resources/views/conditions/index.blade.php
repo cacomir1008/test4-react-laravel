@@ -4,11 +4,15 @@
 
 @section('content')
 @include('nav')
-
+@auth
       <div id="mypage">
     
       </div>
       
+      <div id="mycondition">
+    
+      </div>
+@endauth      
       <!--<div id="mycondition">-->
     
       <!--</div>-->
@@ -35,7 +39,5 @@
   <!--    </div>-->
   <!--  </div>-->
   <!--</div>-->
-  <div id="mycondition">
-    
-  </div>
+
 @endsection
