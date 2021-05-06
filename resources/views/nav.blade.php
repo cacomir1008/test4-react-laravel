@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand navbar-dark mean-fruit-gradient">
 
-  <a class="navbar-brand" href="/"><i class="far fa-sticky-note mr-1"></i>memo</a>
+  <a class="navbar-brand" href="/"><i class="far fa-sticky-note mr-1"></i>Find Coping</a>
 
   <ul class="navbar-nav ml-auto">
     @guest
@@ -16,7 +16,7 @@
     @endguest
     
     <li class="nav-item">
-      <a class="nav-link" href="/alllist"><i class="fas fa-search mr-1"></i>他の人の体験談を検索</a>
+      <a class="nav-link" href="/conditionlist"><i class="fas fa-search mr-1"></i>他の人の体験談を検索</a>
     </li>
     @auth
     <li class="nav-item">
@@ -32,7 +32,7 @@
       </a>
       <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
         <button class="dropdown-item" type="button"
-                onclick="location.href=''">
+                onclick="location.href='/'">
           マイページ
         </button>
         <div class="dropdown-divider"></div>

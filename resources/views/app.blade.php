@@ -24,7 +24,9 @@
   @if(Auth::check())
   <script>
     const api_token = @json(Auth::user()->api_token);
+    const user_id = @json(Auth::user()->id);
     console.log("token",api_token)
+    console.log("user_id",user_id)
   </script>
 @endif
   <!-- Bootstrap tooltips -->

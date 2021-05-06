@@ -33,7 +33,7 @@ class ConditionController extends Controller
         $condition->comment = $request->comment;
         $condition->icon = $request->icon;
         $condition->conditiondata_name = $request->conditiondata_name;
-        $condition->conditiondata_id = $request->conditiondata_id;
+        $condition->conditiondata_id = Conditiondata::where('name',$request->conditiondata_name)->first(['id']);
         $condition->user_id = $request->user_id;
         $condition->user_name = $request->user_name;
         $condition->save();
@@ -56,20 +56,36 @@ class ConditionController extends Controller
 
 
     // ログインユーザーのCondition情報抽出API
-    public function show($id) {
-        $condition = auth()->user()->conditions()->find($id);
-
+    public function userinfo() {
+        $condition = auth()->user()->conditions;
         if(!$condition) {
             return response()->json([
                 'success' => false,
                 'data' => '該当のデータは見つかりませんでした'
             ], 400);
         }
-
         return response()->json([
             'success' => true,
             'data' => $condition->toArray(),
         ]);
     }
+    
+    // public function show($id) {
+    //     $condition = auth()->user()->conditions()->find($id);
+
+    //     if(!$condition) {
+    //         return response()->json([
+    //             'success' => false,
+    //             'data' => '該当のデータは見つかりませんでした'
+    //         ], 400);
+    //     }
+
+    //     return response()->json([
+    //         'success' => true,
+    //         'data' => $condition->toArray(),
+    //     ]);
+    // }
+    
+    
 
 }

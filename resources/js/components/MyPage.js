@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import styled from 'styled-components';
-import { Box, Flex, Spacer } from "@chakra-ui/react";
+import { Box, Flex, Spacer,SimpleGrid } from "@chakra-ui/react";
 
 function MyPage() {
     const [user, setUser] = useState([]);
@@ -39,7 +39,8 @@ function MyPage() {
         <div>
             <SH1>My Page</SH1>
         <SDiv>
-            <Box bg="#FED7D7" boxShadow="dark-lg" w="20%" p={4} color="gray">
+
+            <SBox>
              <dt>名前</dt>
              <dd>{user.name}</dd>
              <SImage
@@ -47,8 +48,9 @@ function MyPage() {
                 width= "150px"
                 height ="150px"
               />
-            </Box>
-             <Box bg="#FFF5F5" boxShadow="dark-lg" w="30%" p={4} color="gray">
+            </SBox>
+    
+             <S2Box>
                 <dt>メール</dt>
                 <dd>{user.email}</dd>
                 <dt>ジェンダー</dt>
@@ -57,13 +59,29 @@ function MyPage() {
                 <dd>{user.birthday}</dd>
                 <dt>email</dt>
                 <dd>{user.email}</dd>
-             </Box>
+             </S2Box>
       </SDiv>
         </div>
     )
 }
 
+const SBox = styled.div`
+    background-color:#FED7D7;
+    width:20%;
+    color:gray;
+    box-shadow:2px 2px 4px gray;
+`
+
+const S2Box = styled.div`
+    background-color:#FFF5F5;
+    width:40%;
+    color:gray;
+    box-shadow:2px 2px 4px gray;
+
+`
+
 const SH1 = styled.h1`
+    text-align:center;
     color: palevioletred;
 `
 
@@ -76,7 +94,7 @@ const SDiv = styled.div`
     text-align:center;
     justify-content: center;
 `
-export default MyPage;
-// if (document.getElementById('mypage')) {
-//     ReactDOM.render(<MyPage />, document.getElementById('mypage'));
-// }
+// export default MyPage;
+if (document.getElementById('mypage')) {
+    ReactDOM.render(<MyPage />, document.getElementById('mypage'));
+}

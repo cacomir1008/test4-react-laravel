@@ -14,6 +14,9 @@
 Auth::routes();
 
 Route::get('/', 'ConditionController@index');
+Route::get('/conditionlist', function () {
+  return view('conditionlist');
+});
 Route::resource('/conditions','ConditionController')->middleware('auth');
 
 

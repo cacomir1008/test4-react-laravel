@@ -23,8 +23,12 @@ Route::get('/tokenupdate','ApiTokenController@update');
 
 
 // ログインユーザーのCondition情報取得API
+// Route::middleware('auth:api')->group(function() {
+//     Route::resource('conditions', 'ConditionController');
+// });
+
 Route::middleware('auth:api')->group(function() {
-    Route::resource('conditions', 'ConditionController');
+    Route::get('/conditions/userinfo','ConditionController@userinfo');
 });
 
 // 全ユーザーとCondition情報取得API

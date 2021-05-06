@@ -4,7 +4,10 @@ import axios from 'axios';
 import styled from 'styled-components';
 import { Box, Flex} from "@chakra-ui/react";
 
+import ConditionThumb  from "./ConditionThumb";
+
 function ConditionList() {
+    // 配列にする
     const [conditions, setConditions] = useState([]);
 
     // 画面が読み込まれたらgetする
@@ -25,49 +28,38 @@ function ConditionList() {
                          });
                 }
     return(
-        <Sdiv>
+        <SDiv>
         {conditions.map((condition) => (
-             <SDiv  key={condition.id}>
-                <dt>症状名</dt>
-                <dd>{condition.conditiondata_name}</dd>
-                <dt>ユーザー名</dt>
-                <dd>{condition.user_name}</dd>
-                <dt>いつから感じたか</dt>
-                <dd>{condition.start}</dd>
-                <dt>いつ診断されたか</dt>
-                <dd>{condition.diagnosis}</dd>
-                <dt>今病院に通っているか</dt>
-                <dd>{condition.hospital}</dd>
-                <dt>コメント</dt>
-                <dd>{condition.comment}</dd>
-                <hr />
-            </SDiv>
-      
+        
+        <ConditionThumb   
+              key = {condition.id}
+              conditiondata_name={condition.conditiondata_name}
+              user_name={condition.user_name}
+              start={condition.start}
+              diagnosis={condition.diagnosis}
+              hospital={condition.hospital}
+              comment={condition.comment}
+              />
              )
              )
             }
-        </Sdiv>
+        </SDiv>
         )
 }
 
 // export default ConditionList;
-const SDiv = styled.div`
-    width:100%;
-    text-align:center;
-    align-items: center;
-    justify-content: center;
-    min-height: 80vh;
-    padding: 0.5rem 0.5rem;
-`
-const Sdiv = styled.div`
-    display:flex;
-    flex-direction: column;
-    width:100%;
-    max-width:800px;
-    margin:0 auto;
-    padding:50px;
-  `
+ 
 
+const SDiv = styled.div`
+　display:flex;
+  flex-wrap: wrap;
+  width:100%;
+  max-width:1200px;
+  margin:0 auto;
+  align-items: center;
+  justify-content: center;
+
+`
 if (document.getElementById('conditionlist')) {
     ReactDOM.render(<ConditionList />, document.getElementById('conditionlist'));
 }
